@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Djangular Home Page</title>
+</head>
+
+<body ng-app="scrumboard.demo">
+
+	{% verbatim %}
+	<div ng-controller="ScrumboardController">
+
+		<div ng-repeat="list in data">
+			<h3>{{ list.name }}</h3>
+			<div ng-repeat="card in list.cards">
+				<li>{{ card.title }}</li>
+			</div>
+			<br>
+			<input type="text" name="card" ng-model="new_title">
+			<button ng-click="add(list, new_title)">+</button>
+		</div>
+
+	</div>
+	{% endverbatim %}
+
+<!-- <script type="text/javascript" src="https://code.angularjs.org/1.5.0/angular.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script src="{% static "scrumboard/scrumboard.js" %}"></script>
+</body>
+</html>
